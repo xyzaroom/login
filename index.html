@@ -49,31 +49,24 @@
       margin-bottom: 20px;
       font-size: 24px;
     }
-    /* Form login */
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-    input[type="text"],
-    input[type="password"] {
+    /* Tambahan styling input dan button */
+    .login-container input {
+      width: 80%;
       padding: 10px;
-      margin-bottom: 15px;
+      margin: 10px 0;
       border: none;
-      border-radius: 6px;
-      font-family: monospace;
-      font-size: 14px;
+      border-radius: 4px;
     }
-    button {
-      padding: 10px;
+    .login-container button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
       background-color: #00ff88;
-      border: none;
-      border-radius: 6px;
-      font-family: monospace;
-      font-size: 14px;
+      color: #000;
       cursor: pointer;
-      transition: background 0.3s;
+      font-weight: bold;
     }
-    button:hover {
+    .login-container button:hover {
       background-color: #00cc77;
     }
   </style>
@@ -87,9 +80,9 @@
   <!-- Kolom login di tengah -->
   <div class="login-container">
     <h2>Login</h2>
-    <form>
-      <input type="text" placeholder="Username" required />
-      <input type="password" placeholder="Password" required />
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Username" required /><br/>
+      <input type="password" id="password" placeholder="Password" required /><br/>
       <button type="submit">Login</button>
     </form>
   </div>
@@ -129,6 +122,18 @@
       requestAnimationFrame(drawBackground);
     }
     drawBackground();
+
+    // Fungsi login
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      if (username === 'admin' && password === '123456') {
+        alert('Login berhasil!');
+      } else {
+        alert('Username atau password salah!');
+      }
+    });
   </script>
 </body>
 </html>
